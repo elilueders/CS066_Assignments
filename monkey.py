@@ -22,7 +22,10 @@ def monkey_experiment(test_string,iterations):
     best_string=""
     best_score=0
     for i in range(iterations):
-        print(i%10,end='\r')
+        dots = ''
+        for j in range(i%10):
+            dots += '.'
+        print(dots,end='\r')
         text=random_text(len(test_string))
         text_score=score(text,test_string)
         if text_score>best_score:
@@ -35,4 +38,4 @@ def monkey_experiment(test_string,iterations):
     return best_string,best_score
 
 
-print(monkey_experiment("hio",5000000))
+print(monkey_experiment("elijah",5000000))
