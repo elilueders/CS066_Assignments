@@ -37,17 +37,17 @@ def monkey_experiment(test_string, iterations):
 
 def print_loop_progress(index,iterations):
     progress_bar = "|"
-    bar_segments = 50
-    complete = (index//(iterations//bar_segments))+1
+    bar_segments = 20
+    complete = index//(iterations//bar_segments)
     remain = bar_segments-complete
     for i in range(complete):
         progress_bar += "X"
     for j in range(remain):
         progress_bar += "-"
     progress_bar += "|"
-    print(progress_bar,index,"/",iterations, end='\r')
+    print(progress_bar,index/iterations*100, end='\r')
 
-    if complete == bar_segments:
+    if complete+1 == bar_segments:
         progress_bar="  "
         for i in range(bar_segments):
             progress_bar += " "
@@ -60,15 +60,15 @@ def print_loop_progress(index,iterations):
 # print(monkey_experiment("to be",10000))
 # print(monkey_experiment("to be",200000))
 # print(monkey_experiment("to be",500000))
-print('\n',monkey_experiment("a",1000000))
-print('\n',monkey_experiment("a",1000000))
-print('\n',monkey_experiment("a",1000000))
-print('\n',monkey_experiment("ab",1000000))
-print('\n',monkey_experiment("ab",1000000))
-print('\n',monkey_experiment("ab",1000000))
-print('\n',monkey_experiment("abc",1000000))
-print('\n',monkey_experiment("abc",1000000))
-print('\n',monkey_experiment("abc",1000000))
-print('\n',monkey_experiment("abcd",1000000))
-print('\n',monkey_experiment("abcd",1000000))
-print('\n',monkey_experiment("abcd",1000000))
+print('\n',monkey_experiment("a",100))
+print('\n',monkey_experiment("a",100))
+print('\n',monkey_experiment("a",100))
+print('\n',monkey_experiment("ab",1000))
+print('\n',monkey_experiment("ab",1000))
+print('\n',monkey_experiment("ab",1000))
+print('\n',monkey_experiment("abc",100000))
+print('\n',monkey_experiment("abc",100000))
+print('\n',monkey_experiment("abc",100000))
+print('\n',monkey_experiment("abcd",500000))
+print('\n',monkey_experiment("abcd",500000))
+print('\n',monkey_experiment("abcd",500000))
