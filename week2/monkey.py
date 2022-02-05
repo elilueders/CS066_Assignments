@@ -1,6 +1,8 @@
 from binascii import Incomplete
 import random
 
+from random_functions import print_loop_progress
+
 def random_letter():
     alphabet = "abcdefghijklmnopqrstuvwxyz "
     return alphabet[random.randint(0, 26)]
@@ -24,7 +26,6 @@ def monkey_experiment(test_string, iterations):
     best_score = 0
     for i in range(iterations):
         print_loop_progress(i,iterations)
-        # print(i, end='\r')
         text = random_text(len(test_string))
         text_score = score(text, test_string)
         if text_score > best_score:
@@ -35,23 +36,7 @@ def monkey_experiment(test_string, iterations):
             break
     return best_string, best_score
 
-def print_loop_progress(index,iterations):
-    progress_bar = "|"
-    bar_segments = 20
-    complete = index//(iterations//bar_segments)
-    remain = bar_segments-complete
-    for i in range(complete):
-        progress_bar += "X"
-    for j in range(remain):
-        progress_bar += "-"
-    progress_bar += "|"
-    print(progress_bar,index/iterations*100, end='\r')
 
-    if complete+1 == bar_segments:
-        progress_bar="  "
-        for i in range(bar_segments):
-            progress_bar += " "
-        print(progress_bar,end='\r')
         
 # print(monkey_experiment("methinks it is like a weaselmethinks it is like a weaselmethinks it is like a weasel",100))
 # print(monkey_experiment("methinks it is like a weasel",100))
