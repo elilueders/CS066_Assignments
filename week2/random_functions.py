@@ -16,3 +16,9 @@ def print_loop_progress(index, iterations):
         for i in range(bar_segments):
             progress_bar += " "
         print(progress_bar, end='\r')
+
+
+def break_if_equal(index, var1, var2):
+    if var1 == var2:
+        print(index+1)
+        return "break"

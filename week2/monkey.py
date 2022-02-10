@@ -25,35 +25,24 @@ def monkey_experiment(test_string, iterations):
     best_string = ""
     best_score = 0
     for i in range(iterations):
-        print_loop_progress(i,iterations)
+        # print_loop_progress(i,iterations)
         text = random_text(len(test_string))
         text_score = score(text, test_string)
         if text_score > best_score:
             best_string = text
             best_score = text_score
         if len(test_string) == best_score:
-            # print(i+1)
+            print(i+1)
             break
     return best_string, best_score
 
 
-        
-# print(monkey_experiment("methinks it is like a weaselmethinks it is like a weaselmethinks it is like a weasel",100))
+#test cases
+# print(monkey_experiment("methinks it is like a weasel",10000))
 # print(monkey_experiment("methinks it is like a weasel",100))
-# print(monkey_experiment("methinks it is like a weasel",1000))
-# print(monkey_experiment("brevity is the soul of wit",100000))
-# print(monkey_experiment("to be",10000))
+# print(monkey_experiment("brevity is the soul of wit",50000))
+# print(monkey_experiment("to be",100000))
 # print(monkey_experiment("to be",200000))
-# print(monkey_experiment("to be",500000))
-print('\n',monkey_experiment("a",100))
-print('\n',monkey_experiment("a",100))
-print('\n',monkey_experiment("a",100))
-print('\n',monkey_experiment("ab",1000))
-print('\n',monkey_experiment("ab",1000))
-print('\n',monkey_experiment("ab",1000))
-print('\n',monkey_experiment("abc",100000))
-print('\n',monkey_experiment("abc",100000))
-print('\n',monkey_experiment("abc",100000))
-print('\n',monkey_experiment("abcd",500000))
-print('\n',monkey_experiment("abcd",500000))
-print('\n',monkey_experiment("abcd",500000))
+print(monkey_experiment("a",500000))
+
+#test results
