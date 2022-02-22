@@ -15,6 +15,7 @@ province_list = []
 for record in DATA:
     if record["Province"] not in province_list:
         province_list.append(record["Province"])
+province_list.remove("American Samoa")
         
 app = Dash(__name__)
 
@@ -33,7 +34,7 @@ app.layout = html.Div(children = [
 
     dcc.Graph(
         id = "province_graph",
-        figure = fig
+        figure = fig,
     )
 ])
 
@@ -46,7 +47,10 @@ def update_province_graph(selected_provinces):
     for record in DATA: 
         if record["Province"] in selected_provinces:
             data_for_selected_provinces.append(record)
-    fig = px.line(data_for_selected_provinces, x="Date", y="Deaths", color="Province", title='Recent Deaths in the US')
+    if data_for_selected_provinces == []:
+        fig = px.line(title="PLEASE SELECT AT LEAST ONE PROVINCE")
+    else:
+        fig = px.line(data_for_selected_provinces, x="Date", y="Deaths", color="Province", title='Recent Deaths in the US')
     return fig
 
 @app.callback( #for fun -- sort selected values when those values are changed
