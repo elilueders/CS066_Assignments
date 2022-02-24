@@ -29,14 +29,13 @@ app.layout = html.Div(children=[
     dcc.Dropdown(
         id="select_province_dropdown",
         options=sorted(province_list),  # makes the dropdown alphabetical
-        # couldn't figure out how to go without a defaalt value without getting callback error on init load
         value=["Iowa", "Nebraska", "Illinois"],
         multi=True
     ),
 
     dcc.Graph(
         id="province_graph",
-        figure=fig,
+        figure=fig
     )
 ])
 
@@ -50,15 +49,15 @@ def update_province_graph(selected_provinces):
     for record in DATA:
         if record["Province"] in selected_provinces:
             data_for_selected_provinces.append(record)
-    if data_for_selected_provinces == []:
-        fig = px.line(title="PLEASE SELECT AT LEAST ONE PROVINCE")
+    if data_for_selected_provinces == []: # added if statement so resolve error when nothing was selected
+        fig = px.line(title="PLEASE SELECT AT LEAST ONE PROVINCE") # sets fig as blank fig with a little error message
     else:
         fig = px.line(data_for_selected_provinces, x="Date", y="Deaths",
-                      color="Province", title='Recent Deaths in the US')
+                      color="Province", title="Recent Deaths in the US by Province")
     return fig
 
 
-@app.callback(  # for fun -- sort selected values alphabetically when those values are changed
+@app.callback(  # for fun -- sorts selected values alphabetically when those values are changed
     Output("select_province_dropdown", "value"),
     Input("select_province_dropdown", "value")
 )
