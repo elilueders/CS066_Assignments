@@ -49,8 +49,9 @@ def update_province_graph(selected_provinces):
     for record in DATA:
         if record["Province"] in selected_provinces:
             data_for_selected_provinces.append(record)
-    if data_for_selected_provinces == []: # added if statement so resolve error when nothing was selected
-        fig = px.line(title="PLEASE SELECT AT LEAST ONE PROVINCE") # sets fig as blank fig with a little error message
+    if data_for_selected_provinces == []:  # added if statement so resolve error when nothing was selected
+        # sets fig as blank fig with a little error message
+        fig = px.line(title="PLEASE SELECT AT LEAST ONE PROVINCE")
     else:
         fig = px.line(data_for_selected_provinces, x="Date", y="Deaths",
                       color="Province", title="Recent Deaths in the US by Province")

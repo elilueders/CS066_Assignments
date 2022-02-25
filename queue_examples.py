@@ -1,25 +1,23 @@
+# 11,8,5,9
+# 4
+# 11
+# 8
+# 5
+# 9
+
 from pythonds.basic import Queue
 
-the_queue = Queue()
+my_q = Queue()
+my_q.enqueue(4)
+my_q.enqueue(7)
+my_q.enqueue(11)
+my_q.dequeue()
+my_q.enqueue(8)
+my_q.dequeue()
+my_q.enqueue(5)
+my_q.enqueue(9)
 
-print(the_queue.isEmpty())
+print("Size:",my_q.size())
 
-the_queue.enqueue("A")
-the_queue.enqueue("B")
-print(the_queue.size())
-
-the_queue.enqueue("C")
-print(the_queue.dequeue())
-the_queue.enqueue("D")
-the_queue.enqueue("E")
-print(the_queue.isEmpty())
-print(the_queue.size())
-print(the_queue.dequeue())
-the_queue.dequeue()
-the_queue.dequeue()
-the_queue.enqueue("F")
-print(the_queue.size())
-
-for x in the_queue:
-    print(x)
-
+while not my_q.isEmpty():
+    print(my_q.dequeue())
