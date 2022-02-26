@@ -1,5 +1,5 @@
 from pythonds.basic import Stack
-#test
+#tester
 
 def check_open_close(string_in):
 
