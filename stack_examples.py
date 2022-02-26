@@ -1,5 +1,5 @@
 from pythonds.basic import Stack
-
+#test
 
 def check_open_close(string_in):
 
@@ -13,7 +13,7 @@ def check_open_close(string_in):
         if char == ")":
             if char_stack.isEmpty():
                 return False
-            else:
+            elif char:
                 char_stack.pop()
 
         if char == "}":
