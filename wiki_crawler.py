@@ -1,11 +1,7 @@
-            
+import queue
+from urllib import response
 import requests
-endpoint = "https://en.wikipedia.org/w/rest.php/v1/page/"
-response = requests.get(endpoint+"Mars")
-page_results = response.json()
-# sometext = page_results["source"][:10000] #use slicing to print only 10000 characters
-
-
+from pythonds.basic import Queue
 
 def get_page_links(wikitext):
     """
@@ -41,13 +37,22 @@ def get_page_links(wikitext):
             i += 1
     return list_of_linked_pages
 
-results = get_page_links(page_results["source"])
+def get_wiki_page_results(wiki_title):
+    url = "https://en.wikipedia.org/w/rest.php/v1/page/" + wiki_title
+    response = requests.get(url)
+    return response.json()
 
-def get_first_ten(page_source):
-    first_ten = []
-    for i in range(10):
-        # print(i, page_source[i])
-        first_ten.append(page_source[i])
-    return first_ten
+#Define your explore_wiki function here
+def explore_wiki(wiki_title, num_pages):
+    q_to_explore = Queue()
+    explored = set()
+    #test 
+    print(get_wiki_page_results(wiki_title)["source"][:num_pages])
 
-print(get_first_ten(results))
+mars_related = explore_wiki("Mars",1000)
+print( mars_related )
+# print( len(mars_related) )
+
+cpu_related = explore_wiki("Central Processing Unit",10000)
+print( cpu_related )
+# print( len(cpu_related) )
