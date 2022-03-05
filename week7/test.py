@@ -2,10 +2,11 @@
 import requests
 endpoint = "https://en.wikipedia.org/w/rest.php/v1/page/"
 response = requests.get(endpoint+"Mars")
+
+endpoint = "https://en.wikipedia.org/w/rest.php/v1/page/sucker"
+response = requests.get(endpoint)
 page_results = response.json()
 # sometext = page_results["source"][:10000] #use slicing to print only 10000 characters
-
-
 
 def get_page_links(wikitext):
     """
@@ -46,7 +47,7 @@ results = get_page_links(page_results["source"])
 def get_first_ten(page_source):
     first_ten = []
     for i in range(10):
-        # print(i, page_source[i])
+        print(i, page_source[i])
         first_ten.append(page_source[i])
     return first_ten
 
