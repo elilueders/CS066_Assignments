@@ -104,7 +104,6 @@ for s in suits:
     for v in range(2, 15):
         curr_card = PlayingCard(v, s)
         standard_deck.put_on_top(curr_card)
-print(standard_deck)
 
 def one_hand_solitaire(stock):
     # Game
@@ -166,5 +165,8 @@ the game is simple and predetermined by the shuffle and almost impossible to win
 - game is over when stock is empty and you have no matches in hand
 
 got a little in the weeds trying to figure out what to print to the terminal to show it working but i do think it works 
-landed on showing the shuffled deck and the score
+landed on just showing the shuffled deck and the score after game is over
+
+stock [Q♠, K♣, 3♢, Q♣, K♡, 8♣, 2♠, K♢, 8♡, 7♡, 6♣, A♠, Q♢, 4♣, 10♠, K♠, A♢, 4♠, 5♡, 3♣, 9♡, 2♢, 2♣, 6♡, 5♠, 6♠, 9♣, 8♢, 7♢, A♡, A♣, 6♢, J♢, 10♡, 2♡, 9♠, 10♢, 4♢, 5♣, 5♢, 9♢, 4♡, Q♡, 3♡, J♠, 10♣, 7♠, J♡, 7♣, 8♠, J♣, 3♠]
+Score:  10
 """
