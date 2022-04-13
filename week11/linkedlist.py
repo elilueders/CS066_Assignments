@@ -17,22 +17,20 @@ class Node:
         self.next = newnext
 
 class UnorderedList:
-# add(item) adds a new item to the list. It needs the item and returns nothing. Assume the item is not already in the list.
-# size() returns the number of items in the list. It needs no parameters and returns an integer.
-# index(item) returns the position of item in the list. It needs the item and returns the index. Assume the item is in the list.
-# insert(pos,item) adds a new item to the list at position pos. It needs the item and returns nothing. Assume the item is not already in the list and there are enough existing items to have position pos.
-# pop() removes and returns the last item in the list. It needs nothing and returns an item. Assume the list has at least one item.
+    # add(item) adds a new item to the list. It needs the item and returns nothing. Assume the item is not already in the list.
+    # size() returns the number of items in the list. It needs no parameters and returns an integer.
+    # insert(pos,item) adds a new item to the list at position pos. It needs the item and returns nothing. Assume the item is not already in the list and there are enough existing items to have position pos.
+    # pop() removes and returns the last item in the list. It needs nothing and returns an item. Assume the list has at least one item.
 
-# List() creates a new list that is empty. It needs no parameters and returns an empty list.
+    # List() creates a new list that is empty. It needs no parameters and returns an empty list.
     def __init__(self):
         self.head = None
         
-# isEmpty() tests to see whether the list is empty. It needs no parameters and returns a boolean value.
+    # isEmpty() tests to see whether the list is empty. It needs no parameters and returns a boolean value.
     def isEmpty(self):
         return self.head == None
     
-# append(item) adds a new item to the end of the list making it the last item in the collection. It needs the item and returns nothing. Assume the item is not already in the list.
-    #this method is really a prepend - it puts the new node at the beginning
+    # append(item) adds a new item to the end of the list making it the last item in the collection. It needs the item and returns nothing. Assume the item is not already in the list.
     def add(self,item):
         temp = Node(item)
         temp.setNext(self.head)
@@ -65,7 +63,7 @@ class UnorderedList:
             
         return current.getData()
 
-# search(item) searches for the item in the list. It needs the item and returns a boolean value.
+    #search(item) searches for the item in the list. It needs the item and returns a boolean value.
     def __contains__(self, item):
         current = self.head
         found = False
@@ -78,8 +76,20 @@ class UnorderedList:
                 current = current.getNext()
 
         return found
+    
+    # index(item) returns the position of item in the list. It needs the item and returns the index. Assume the item is in the list.
+    def index(self, item):
+        current = self.head
+        index = 0
 
-# pop(pos) removes and returns the item at position pos. It needs the position and returns the item. Assume the item is in the list
+        while current:
+            if item == current.getData():
+                return index
+            else:
+                current = current.getNext()
+                index += 1
+
+    # pop(pos) removes and returns the item at position pos. It needs the position and returns the item. Assume the item is in the list
     def pop(self,index):
         
         if index < 0:
@@ -104,8 +114,9 @@ class UnorderedList:
             
         return current.getData()
 
-# remove(item) removes the item from the list. It needs the item and modifies the list. Assume the item is present in the list.
             
+""" TESTS 
+
 my_list = UnorderedList()
 
 my_list.add(31)
@@ -116,5 +127,22 @@ my_list.add(26)
 my_list.add(54)
 print(my_list)
 
-print( 17 in my_list ) #should print True
-print( 34 in my_list ) #should print False
+print( my_list.index(54) )
+print( my_list.index(93) )
+print( my_list.index(31) )
+print( my_list.index(44) )
+
+my_list.pop(0)
+my_list.pop(0)
+my_list.pop(0)
+my_list.pop(0)
+my_list.pop(0)
+print(my_list)
+
+print( my_list.index(31) )
+print( my_list.index(1) )
+
+my_list.pop(0)
+print(my_list)
+
+print( my_list.index(31) )"""
